@@ -169,7 +169,8 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
 
-        Toplan\PhpSms\PhpSmsServiceProvider::class
+        Toplan\PhpSms\PhpSmsServiceProvider::class,
+        Overtrue\LaravelWeChat\ServiceProvider::class,
     ],
 
     /*
@@ -221,6 +222,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'PhpSms' => Toplan\PhpSms\Facades\Sms::class,
+        'EasyWeChat' => Overtrue\LaravelWeChat\Facade::class,
 
     ],
 
