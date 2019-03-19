@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc84fb592719c272088f6fa9d98d02d3",
+    "content-hash": "7220dbabdf1e9a6d21bf123ece25bcad",
     "packages": [
         {
             "name": "dingo/api",
@@ -7998,8 +7998,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tymon/jwt-auth": 5,
-        "dingo/api": 10
+        "dingo/api": 10,
+        "tymon/jwt-auth": 5
     },
     "prefer-stable": false,
     "prefer-lowest": false,

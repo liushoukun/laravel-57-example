@@ -6,8 +6,10 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
+        "dingo/api": "2.0.0-beta1",
         "encore/laravel-admin": "^1.6",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
         "jxlwqq/env-manager": "^0.1.0",
         "laravel-admin-ext/config": "^1.0",
         "laravel-admin-ext/helpers": "^1.1",
@@ -18,8 +20,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
-        "tymon/jwt-auth": "^1.0.0-rc.2",
-        "dingo/api": "2.0.0-beta1"
+        "tymon/jwt-auth": "^1.0.0-rc.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
