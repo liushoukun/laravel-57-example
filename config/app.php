@@ -171,6 +171,7 @@ return [
 
         Toplan\PhpSms\PhpSmsServiceProvider::class,
         Overtrue\LaravelWeChat\ServiceProvider::class,
+        Jacobcyl\AliOSS\AliOssServiceProvider::class,
     ],
 
     /*
