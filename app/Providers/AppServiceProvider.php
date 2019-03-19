@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Encore\Admin\Config\Config;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -16,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        // 自定义配置
+        Config::load();
+
     }
 
     /**
