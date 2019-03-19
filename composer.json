@@ -18,7 +18,8 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
-        "tymon/jwt-auth": "^1.0.0-rc.2"
+        "tymon/jwt-auth": "^1.0.0-rc.2",
+        "dingo/api": "2.0.0-beta1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
