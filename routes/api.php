@@ -12,24 +12,41 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+$router = app('Dingo\Api\Routing\Router');
+$router->version('v1', function (\Dingo\Api\Routing\Router $router) {
+    $router->group([
+        'namespace' => 'App\Http\Controllers',
+    ], function (\Dingo\Api\Routing\Router $router) {
 
-Route::group(['middleware' => 'auth:api'], function () {
-    Route::post('logout', 'Auth\LoginController@logout');
+        $router->group([
+            'middleware' => 'auth:api',
+        ], function (\Dingo\Api\Routing\Router $router) {
 
-    Route::get('/user', function (Request $request) {
-        return $request->user();
+            $router->post('logout', 'Auth\LoginController@logout');
+
+            $router->get('/user', function (Request $request) {
+                return $request->user();
+            });
+            $router->patch('settings/profile', 'Settings\ProfileController@update');
+            $router->patch('settings/password', 'Settings\PasswordController@update');
+
+        });
+        $router->group(['middleware' => 'guest:api'], function (\Dingo\Api\Routing\Router $router) {
+            $router->post('login', 'Auth\LoginController@login');
+            $router->post('register', 'Auth\RegisterController@register');
+            $router->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+            $router->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+            $router->post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
+            $router->get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
+        });
+
     });
 
-    Route::patch('settings/profile', 'Settings\ProfileController@update');
-    Route::patch('settings/password', 'Settings\PasswordController@update');
+
 });
 
-Route::group(['middleware' => 'guest:api'], function () {
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('register', 'Auth\RegisterController@register');
-    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-    Route::post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
-    Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
-});
+
+
+
