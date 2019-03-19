@@ -169,6 +169,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
 
+        Toplan\PhpSms\PhpSmsServiceProvider::class
     ],
 
     /*
@@ -219,6 +220,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'PhpSms' => Toplan\PhpSms\Facades\Sms::class,
 
     ],
 
