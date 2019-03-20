@@ -3,6 +3,10 @@ import store from '~/store'
 import router from '~/router'
 import swal from 'sweetalert2'
 import i18n from '~/plugins/i18n'
+import api from '~/plugins/api'
+
+// 初始化请求域名
+axios.defaults.baseURL = api.baseURI
 
 // Request interceptor
 axios.interceptors.request.use(request => {
@@ -15,7 +19,11 @@ axios.interceptors.request.use(request => {
   if (locale) {
     request.headers.common['Accept-Language'] = locale
   }
-
+  let timestamp = Date.parse(new Date()).toString()
+  timestamp = timestamp.substr(0, 10)
+  request.headers.common['x-ca-timestamp'] = timestamp
+  let nonce = Math.random().toString(36).substr(2)
+  request.headers.common['x-ca-nonce'] = nonce
   // request.headers['X-Socket-Id'] = Echo.socketId()
 
   return request
@@ -23,7 +31,7 @@ axios.interceptors.request.use(request => {
 
 // Response interceptor
 axios.interceptors.response.use(response => response, error => {
-  const { status } = error.response
+  const {status} = error.response
 
   if (status >= 500) {
     swal({
@@ -47,7 +55,7 @@ axios.interceptors.response.use(response => response, error => {
     }).then(() => {
       store.commit('auth/LOGOUT')
 
-      router.push({ name: 'login' })
+      router.push({name: 'login'})
     })
   }
 
